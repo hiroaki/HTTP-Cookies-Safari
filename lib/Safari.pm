@@ -8,11 +8,11 @@ HTTP::Cookies::Safari - Cookie storage and management for Safari
 
 =head1 SYNOPSIS
 
-use HTTP::Cookies::Safari;
+	use HTTP::Cookies::Safari;
 
-$cookie_jar = HTTP::Cookies::Safari->new;
+	$cookie_jar = HTTP::Cookies::Safari->new;
 
-# otherwise same as HTTP::Cookies
+	# otherwise same as HTTP::Cookies
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ brian d foy, C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Copyright 2003, brian d foy, All rights reserved
+Copyright 2003-2004, brian d foy, All rights reserved
 
 This library is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
@@ -72,48 +72,48 @@ use Mac::PropertyList;
 sub load
 	{
     my( $self, $file ) = @_;
- 
+
     $file ||= $self->{'file'} || return;
- 
+
     local $_;
     local $/ = "\n";  # make sure we got standard record separator
 
     open my( $fh ), $file or return;
 
     my $data = do { local $/; <$fh> };
- 
+
     my $plist = Mac::PropertyList::parse_plist( $data );
- 
+
  	my $cookies = $plist->{value};
- 	
- 	foreach my $hash ( @$cookies ) 
+
+ 	foreach my $hash ( @$cookies )
     	{
     	my $cookie = $hash->{value};
-    	
+
     	my @bits  = map { $cookie->{$_}{value} }
     		qw( Domain Path Name Value Expires );
     		#     0     1    2     3      4
-		
+
 		my $expires = $bits[4];
-		
+
 		my( $y, $m, $d, $h, $mn, $s ) = $expires =~
 			m/(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z/g;
-				
-		$expires = 
+
+		$expires =
 			&Date::Calc::Mktime( $y, $m, $d, $h, $mn, $s );
-					
+
 		# XXX: Convert Expires date to unix epoch
-		
+
 		#print STDERR "@bits\n";
-					
+
 		my $secure = FALSE;
-				
+
 		$self->set_cookie(undef, @bits[2,3,1,0], undef,
 			0, 0, $expires - time, 0);
     	}
-    	
+
     close $fh;
-    
+
     1;
 	}
 
@@ -122,13 +122,13 @@ sub save
     my( $self, $file ) = @_;
 
     $file ||= $self->{'file'} || return;
- 
+
 	my $plist = { type => 'array', value => [] };
-	
+
     $self->scan(
-    	do { 	
+    	do {
     	my $array = $plist->{value};
-    	
+
     	sub {
 			my( $version, $key, $val, $path, $domain, $port,
 				$path_spec, $secure, $expires, $discard, $rest ) = @_;
@@ -144,12 +144,12 @@ sub save
 					my @times = localtime( $expires );
 					$times[5] += 1900;
 					$times[4] += 1;
-					
+
 					sprintf "%4d-%02d-%02dT%02d:%02d:%02dZ",
 						@times[5,4,3,2,1,0];
 					}
-				};		
- 
+				};
+
 			$secure = $secure ? TRUE : FALSE;
 
 			my $bool = $domain =~ /^\./ ? TRUE : FALSE;
@@ -161,13 +161,13 @@ sub save
 				Name    => { type => 'string', value => $key     },
 				Expires => { type => 'date',   value => $expires },
 				};
-				
+
 			push @$array, { type => 'dict', value => $hash };
     		}
 		} );
-		
+
 	open my $fh, "> $file" or die "Could not write file [$file]! $!\n";
-    print $fh ( Mac::PropertyList::plist_as_string( $plist ) );	
+    print $fh ( Mac::PropertyList::plist_as_string( $plist ) );
     close $fh;
 	}
 
