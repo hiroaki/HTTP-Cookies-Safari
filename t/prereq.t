@@ -1,12 +1,5 @@
-# $Id$
-use strict;
-
-use Test::More tests => 1;
-
-SKIP: {
-	eval { require Test::Prereq; };
-
-	skip "Skipping POD tests---No Test::Prereq found", 1 if $@;
-
-	Test::Prereq::prereq_ok();
-	}
+#$Id$
+use Test::More;
+eval "use Test::Prereq";
+plan skip_all => "Test::Prereq required to test dependencies" if $@;
+prereq_ok();
