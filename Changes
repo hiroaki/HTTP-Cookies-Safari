@@ -1,5 +1,9 @@
 # $Id$
 
+1.07 - Fri Mar 11 23:56:00 2005
+	* Added POD coverage tests, fixed issues
+	* no code updates: no need to upgrade
+
 1.06 - Mon Sep 20 20:13:09 2004
 * updated to work with the latest Mac::PropertyList, which has a new
 interface
