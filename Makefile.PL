@@ -22,7 +22,7 @@ WriteMakefile
  		'PREREQ_PM'      => {
  			'Date::Calc'            => '0',
  			'HTTP::Cookies'         => '1.25',
- 			'Mac::PropertyList'     => '0',
+ 			'Mac::PropertyList'     => '0.9',
  			'Test::More'            => '0',
  			'Text::Diff'            => '0',
  			},

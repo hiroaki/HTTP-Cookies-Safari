@@ -84,13 +84,13 @@ sub load
 
     my $plist = Mac::PropertyList::parse_plist( $data );
 
- 	my $cookies = $plist->{value};
+ 	my $cookies = $plist->value;
 
  	foreach my $hash ( @$cookies )
     	{
-    	my $cookie = $hash->{value};
+    	my $cookie = $hash->value;
 
-    	my @bits  = map { $cookie->{$_}{value} }
+    	my @bits  = map { $cookie->{$_}->value }
     		qw( Domain Path Name Value Expires );
     		#     0     1    2     3      4
 
@@ -123,11 +123,12 @@ sub save
 
     $file ||= $self->{'file'} || return;
 
-	my $plist = { type => 'array', value => [] };
-
+	my $plist = Mac::PropertyList::array->new( [] );
+	print STDERR "plist is $plist\n";
+	
     $self->scan(
     	do {
-    	my $array = $plist->{value};
+    	my $array = $plist->value;
 
     	sub {
 			my( $version, $key, $val, $path, $domain, $port,
@@ -155,17 +156,17 @@ sub save
 			my $bool = $domain =~ /^\./ ? TRUE : FALSE;
 
 			my $hash = {
-				Value   => { type => 'string', value => $val     },
-				Path    => { type => 'string', value => $path    },
-				Domain  => { type => 'string', value => $domain  },
-				Name    => { type => 'string', value => $key     },
-				Expires => { type => 'date',   value => $expires },
+				Value   => Mac::PropertyList::string->new( $val     ),
+				Path    => Mac::PropertyList::string->new( $path    ),
+				Domain  => Mac::PropertyList::string->new( $domain  ),
+				Name    => Mac::PropertyList::string->new( $key     ),
+				Expires => Mac::PropertyList::date  ->new( $expires ),
 				};
 
-			push @$array, { type => 'dict', value => $hash };
+			push @$array, Mac::PropertyList::dict->new( $hash );
     		}
 		} );
-
+	
 	open my $fh, "> $file" or die "Could not write file [$file]! $!\n";
     print $fh ( Mac::PropertyList::plist_as_string( $plist ) );
     close $fh;
