@@ -1,5 +1,11 @@
 # $Id$
 
+1.03 - Thu Nov 27 06:56:07 2003
+HTTP::Cookies::Safari now uses Date::Calc instead of Date::Manip.
+This should make date calculations much faster. 
+
+No bugs were fixed, but this should be a performance boost.
+
 1.02 - Wed Jan  8 01:11:51 2003
 	* now handles expiry times
 
