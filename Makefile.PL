@@ -15,6 +15,7 @@ WriteMakefile
         'NAME'           => 'HTTP::Cookies::Safari',
         'VERSION_FROM'   => 'lib/Safari.pm',
  		'PREREQ_PM'      => {
+ 			'Date::Manip'           => '0',
  			'File::Find::Rule'      => '0',
  			'HTTP::Cookies'         => '1.25',
  			'Mac::PropertyList'     => '0',

@@ -66,8 +66,7 @@ use constant FALSE => 'FALSE';
 
 $VERSION = sprintf "%2d.%02d", q$Revision$ =~ m/ (\d+) \. (\d+) /xg;
 
-my $EPOCH_OFFSET = 978_350_400;  # difference from Unix epoch
-
+use Date::Manip;
 use Mac::PropertyList;
 
 sub load
@@ -95,6 +94,14 @@ sub load
     		qw( Domain Path Name Value Expires );
     		#     0     1    2     3      4
 		
+		my $expires = $bits[4];
+		
+		my( $y, $m, $d, $h, $mn, $s ) = $expires =~
+			m/(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z/g;
+				
+		$expires = 
+			&Date::Manip::Date_SecsSince1970GMT( $m, $d, $y, $h, $mn, $s );
+					
 		# XXX: Convert Expires date to unix epoch
 		
 		#print STDERR "@bits\n";
@@ -102,7 +109,7 @@ sub load
 		my $secure = FALSE;
 				
 		$self->set_cookie(undef, @bits[2,3,1,0], undef,
-			0, 0, $bits[4], 0);
+			0, 0, $expires - time, 0);
     	}
     	
     close $fh;
@@ -128,10 +135,21 @@ sub save
 
 			return if $discard && not $self->{ignore_discard};
 
-			$expires = $expires ? $expires : 0;
+			return if time > $expires;
 
- 			return if time > $expires;
-
+			$expires = do {
+				unless( $expires ) { 0 }
+				else
+					{
+					my @times = localtime( $expires );
+					$times[5] += 1900;
+					$times[4] += 1;
+					
+					sprintf "%4d-%02d-%02dT%02d:%02d:%02dZ",
+						@times[5,4,3,2,1,0];
+					}
+				};		
+ 
 			$secure = $secure ? TRUE : FALSE;
 
 			my $bool = $domain =~ /^\./ ? TRUE : FALSE;
