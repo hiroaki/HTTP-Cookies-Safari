@@ -1,5 +1,8 @@
 # $Id$
 
+1.02 - Wed Jan  8 01:11:51 2003
+	* now handles expiry times
+
 1.01 - Tue Jan  7 23:54:19 2003
 	* initial version to work with Safari cookie files
 
