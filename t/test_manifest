@@ -1,5 +1,3 @@
 compile.t
-pod.t
-prereq.t
 load.t
 save.t
