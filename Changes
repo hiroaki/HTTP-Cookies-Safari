@@ -1,5 +1,9 @@
 # $Id$
 
+1.06 - Mon Sep 20 20:13:09 2004
+* updated to work with the latest Mac::PropertyList, which has a new
+interface
+
 1.03 - Thu Nov 27 06:56:07 2003
 HTTP::Cookies::Safari now uses Date::Calc instead of Date::Manip.
 This should make date calculations much faster. 
