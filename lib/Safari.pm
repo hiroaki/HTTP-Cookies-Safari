@@ -66,7 +66,7 @@ use constant FALSE => 'FALSE';
 
 $VERSION = sprintf "%2d.%02d", q$Revision$ =~ m/ (\d+) \. (\d+) /xg;
 
-use Date::Manip;
+use Date::Calc;
 use Mac::PropertyList;
 
 sub load
@@ -78,7 +78,7 @@ sub load
     local $_;
     local $/ = "\n";  # make sure we got standard record separator
 
-    open my $fh, $file or return;
+    open my( $fh ), $file or return;
 
     my $data = do { local $/; <$fh> };
  
@@ -100,7 +100,7 @@ sub load
 			m/(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z/g;
 				
 		$expires = 
-			&Date::Manip::Date_SecsSince1970GMT( $m, $d, $y, $h, $mn, $s );
+			&Date::Calc::Mktime( $y, $m, $d, $h, $mn, $s );
 					
 		# XXX: Convert Expires date to unix epoch
 		
