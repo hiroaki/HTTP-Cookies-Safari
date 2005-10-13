@@ -1,0 +1,8 @@
+.cvsignore
+.lwpcookies
+.releaserc
+.bak$
+.tar.gz$
+blib
+CVS
+pm_to_blib

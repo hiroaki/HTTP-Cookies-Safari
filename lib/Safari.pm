@@ -99,8 +99,8 @@ sub load
 		my( $y, $m, $d, $h, $mn, $s ) = $expires =~
 			m/(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z/g;
 
-		$expires =
-			&Date::Calc::Mktime( $y, $m, $d, $h, $mn, $s );
+		$expires = eval {
+			&Date::Calc::Mktime( $y, $m, $d, $h, $mn, $s ) } || 0xFFFFFFFF;
 
 		# XXX: Convert Expires date to unix epoch
 
