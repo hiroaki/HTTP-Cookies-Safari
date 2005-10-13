@@ -19,6 +19,11 @@ HTTP::Cookies::Safari - Cookie storage and management for Safari
 This package overrides the load() and save() methods of HTTP::Cookies
 so it can work with Safari cookie files.
 
+Note: If the source Safari cookie file specifies and expiry date past
+the unix 32-bit epoch, this file changes the expiry date to 0xFFFFFFFF
+in unix seconds. That should be enough for anyone, at least to the next
+release.
+
 See L<HTTP::Cookies>.
 
 =head1 SOURCE AVAILABILITY
@@ -34,6 +39,10 @@ members of the project can shepherd this module appropriately.
 =head1 AUTHOR
 
 brian d foy, C<< <bdfoy@cpan.org> >>
+
+=head1 CREDITS
+
+Jon Orwant pointed out the problem with dates too far in the future
 
 =head1 COPYRIGHT
 
