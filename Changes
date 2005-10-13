@@ -1,5 +1,13 @@
 # $Id$
 
+1.09 - Thu Oct 13 15:19:42 2005
+	* Jon Orwants pointed out that a Safari cookie file could have a 
+	date past the unix epoch for the expiry time of the cookie. I need to
+	convert that to unix seconds internally. To get around this, dates too
+	far in the future get truncated to 0xFF_FF_FF_FF.
+	* If you are working with dates those far out, first ask yourself "Why?",
+	then upgrade.
+
 1.07 - Fri Mar 11 23:56:00 2005
 	* Added POD coverage tests, fixed issues
 	* no code updates: no need to upgrade
