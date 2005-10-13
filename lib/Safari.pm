@@ -24,6 +24,7 @@ the unix 32-bit epoch, this file changes the expiry date to 0xFFFFFFFF
 in unix seconds. That should be enough for anyone, at least to the next
 release.
 
+
 See L<HTTP::Cookies>.
 
 =head1 SOURCE AVAILABILITY
