@@ -1,5 +1,9 @@
 # $Id$
 
+1.11 - Sun Dec 25 09:39:32 2005
+	* Fixed issue with ignore_discard: cookies with no expiry were discarded
+	anyway.
+
 1.09 - Thu Oct 13 15:19:42 2005
 	* Jon Orwants pointed out that a Safari cookie file could have a 
 	date past the unix epoch for the expiry time of the cookie. I need to
