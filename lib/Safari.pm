@@ -146,7 +146,7 @@ sub save
 
 			return if $discard && not $self->{ignore_discard};
 
-			return if time > $expires;
+			return if defined $expires && time > $expires;
 
 			$expires = do {
 				unless( $expires ) { 0 }
