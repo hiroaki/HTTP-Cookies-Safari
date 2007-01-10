@@ -45,12 +45,12 @@ brian d foy, C<< <bdfoy@cpan.org> >>
 
 Jon Orwant pointed out the problem with dates too far in the future
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2003-2005, brian d foy, All rights reserved
+Copyright (c) 2003-2007 brian d foy.  All rights reserved.
 
-This library is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself.
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =cut
 

@@ -6,3 +6,6 @@
 blib
 CVS
 pm_to_blib
+Makefile$
+Makefile.old$
+HTTP-Cookies-*
