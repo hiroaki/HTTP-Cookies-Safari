@@ -1,5 +1,9 @@
 # $Id$
 
+1.12 - Tue Jan  9 23:02:48 2007
+	* updated copyright and license info
+	* no code changes, so no need to upgrade
+
 1.11 - Sun Dec 25 09:39:32 2005
 	* Fixed issue with ignore_discard: cookies with no expiry were discarded
 	anyway.
