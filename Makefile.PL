@@ -5,9 +5,11 @@ eval "use Test::Manifest 1.14";
 	
 WriteMakefile
 	(
-	'NAME'           => 'HTTP::Cookies::Safari',
-	'VERSION_FROM'   => 'lib/Safari.pm',
+	'NAME'          => 'HTTP::Cookies::Safari',
+	'VERSION_FROM'  => 'lib/Safari.pm',
 	'LICENSE'       => 'perl',
+	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
+
 	'PREREQ_PM'      => {
 		'Date::Calc'            => '0',
 		'HTTP::Cookies'         => '1.25',
