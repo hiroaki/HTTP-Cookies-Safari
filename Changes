@@ -1,5 +1,10 @@
 # $Id$
 
+1.13 - Sat Nov 10 15:16:05 2007
+	* Cleanups for the move from CVS to SVN, kwalitee
+	* Now requires Perl 5.006
+	* No need to upgrade
+
 1.12 - Tue Jan  9 23:02:48 2007
 	* updated copyright and license info
 	* no code changes, so no need to upgrade
