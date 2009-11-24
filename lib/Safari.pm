@@ -1,4 +1,3 @@
-# $Id$
 package HTTP::Cookies::Safari;
 use strict;
 
@@ -13,31 +12,28 @@ HTTP::Cookies::Safari - Cookie storage and management for Safari
 
 	use HTTP::Cookies::Safari;
 
-	$cookie_jar = HTTP::Cookies::Safari->new;
+	my $cookie_jar = HTTP::Cookies::Safari->new;
+	$cookie_jar->load( '/Users/Buster/Library/Cookies/Cookies.plist' );
 
 	# otherwise same as HTTP::Cookies
 
 =head1 DESCRIPTION
 
-This package overrides the load() and save() methods of HTTP::Cookies
-so it can work with Safari cookie files.
+This package overrides the C<load()> and C<save()> methods of
+C<HTTP::Cookies> so it can work with Safari cookie files.
 
 Note: If the source Safari cookie file specifies and expiry date past
 the unix 32-bit epoch, this file changes the expiry date to 0xFFFFFFFF
-in unix seconds. That should be enough for anyone, at least to the next
-release.
+in unix seconds. That should be enough for anyone, at least to the
+next release.
 
 See L<HTTP::Cookies>.
 
 =head1 SOURCE AVAILABILITY
 
-This source is part of a SourceForge project which always has the
-latest sources in CVS, as well as all of the previous releases.
+This module is in Github:
 
-	http://sourceforge.net/projects/brian-d-foy/
-
-If, for some reason, I disappear from the world, one of the other
-members of the project can shepherd this module appropriately.
+	http://github.com/briandfoy/HTTP-Cookies-Safari
 
 =head1 AUTHOR
 
@@ -49,7 +45,7 @@ Jon Orwant pointed out the problem with dates too far in the future
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2003-2007 brian d foy.  All rights reserved.
+Copyright (c) 2003-2009 brian d foy.  All rights reserved.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
@@ -76,7 +72,7 @@ use vars qw( $VERSION );
 use constant TRUE  => 'TRUE';
 use constant FALSE => 'FALSE';
 
-$VERSION = sprintf "%2d.%02d", qw( 1 13 );
+$VERSION = '1.14';
 
 use Date::Calc;
 use Mac::PropertyList;

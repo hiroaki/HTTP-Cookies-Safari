@@ -1,9 +1,8 @@
-# $Id$
 use ExtUtils::MakeMaker;
 
-require 5.006;
+require 5.008;
 
-eval "use Test::Manifest 1.14";
+eval "use Test::Manifest 1.21";
 	
 WriteMakefile
 	(
@@ -13,17 +12,15 @@ WriteMakefile
 	'LICENSE'       => 'perl',
 	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
 
-	'PREREQ_PM'      => {
+	'PREREQ_PM'     => {
 		'Date::Calc'            => '0',
 		'HTTP::Cookies'         => '1.25',
-		'Mac::PropertyList'     => '0.9',
+		'Mac::PropertyList'     => '1.33',
 		'Text::Diff'            => '0',
 		},
-	'PM'             => {
+
+	'PM'            => {
 		'lib/Safari.pm' => '$(INST_LIBDIR)/Safari.pm',
-		},
-	'MAN3PODS'		 => {
-		'lib/Safari.pm' => '$(INST_MAN3DIR)/HTTP::Cookies::Safari.3',
 		},
 	
 	clean => { FILES => 'HTTP-Cookies-Safari-*' },
