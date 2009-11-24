@@ -10,3 +10,4 @@ Makefile$
 Makefile.old$
 HTTP-Cookies-*
 t/Cookies2.plist
+.git
