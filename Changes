@@ -1,5 +1,9 @@
 # $Id$
 
+1.15 - Mon Apr 18 14:43:38 2011
+	* Updated module and fixed test with expiring cookie
+	* Everything works the same as the last version
+
 1.13 - Sat Nov 10 15:16:05 2007
 	* Cleanups for the move from CVS to SVN, kwalitee
 	* Now requires Perl 5.006
