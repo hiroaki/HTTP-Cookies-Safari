@@ -1,7 +1,6 @@
 use Test::More tests => 5;
 
 use HTTP::Cookies::Safari;
-#use Data::Dumper;
 
 my %Domains = qw( .cnn.com 1 .usatoday.com 3 );
 
@@ -22,5 +21,3 @@ foreach my $domain ( keys %Domains )
 
 is( $hash->{'.cnn.com'}{'/'}{'CNNid'}[1], '18c15c9e-1045-1041996715-381', 
 	'Cookie has right value' );
-
-#print STDERR Data::Dumper::Dumper( $jar );
