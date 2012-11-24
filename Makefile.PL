@@ -17,6 +17,8 @@ WriteMakefile
 		'HTTP::Cookies'         => '1.25',
 		'Mac::PropertyList'     => '1.33',
 		'Text::Diff'            => '0',
+		'IO::File'              => '0',
+		'DateTime'              => '0',
 		},
 	
 	clean => { FILES => 'HTTP-Cookies-Safari-*' },

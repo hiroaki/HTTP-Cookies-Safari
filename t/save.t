@@ -10,7 +10,7 @@ my %Domains = qw( .cnn.com 1 .usatoday.com 3 );
 
 
 my $jar = HTTP::Cookies::Safari->new( File => $dist_file );
-isa_ok( $jar, 'HTTP::Cookies::Safari' );
+isa_ok( $jar, 'HTTP::Cookies' );
 
 my $result = $jar->save( $save_file );
 

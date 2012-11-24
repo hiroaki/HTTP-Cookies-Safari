@@ -9,7 +9,7 @@ else
 	{
 	plan tests => 1;
 
-	pod_coverage_ok( "HTTP::Cookies::Safari", {
+	pod_coverage_ok( "HTTP::Cookies::Safari::Plist", {
 		trustme => [ qr/load|save/ ],
 		}
 		);      

@@ -5,7 +5,7 @@ use HTTP::Cookies::Safari;
 my %Domains = qw( .cnn.com 1 );
 
 my $jar = HTTP::Cookies::Safari->new( File => 't/Cookies-2039.plist' );
-isa_ok( $jar, 'HTTP::Cookies::Safari' );
+isa_ok( $jar, 'HTTP::Cookies' );
 
 my $hash = $jar->{COOKIES};
 

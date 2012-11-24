@@ -1,6 +1,8 @@
 Changes
 examples/README
 lib/HTTP/Cookies/Safari.pm
+lib/HTTP/Cookies/Safari/BinaryCookies.pm
+lib/HTTP/Cookies/Safari/Plist.pm
 LICENSE
 Makefile.PL
 MANIFEST			This list of files
