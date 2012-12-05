@@ -3,6 +3,7 @@ compile.t
 pod.t
 pod_coverage.t
 prereq.t
+load_bin.t
 load.t
 epoch-limit.t
 save.t

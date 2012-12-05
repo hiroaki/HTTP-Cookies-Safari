@@ -10,8 +10,10 @@ MANIFEST.SKIP
 README
 t/compile.t
 t/Cookies-2039.plist
+t/Cookies.binarycookies
 t/Cookies.plist
 t/epoch-limit.t
+t/load_bin.t
 t/load.t
 t/pod.t
 t/pod_coverage.t

@@ -3,7 +3,7 @@ use strict;
 
 use base qw(HTTP::Cookies);
 use vars qw($VERSION);
-$VERSION = '1.15_01';
+$VERSION = '1.15_02';
 
 use vars qw($IMPLEMENT);
 

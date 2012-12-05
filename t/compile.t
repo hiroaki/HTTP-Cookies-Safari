@@ -1,5 +1,5 @@
 BEGIN {
-	@classes = qw( HTTP::Cookies::Safari );
+	@classes = qw( HTTP::Cookies::Safari HTTP::Cookies::Safari::Plist HTTP::Cookies::Safari::BinaryCookies );
 	}
 
 use Test::More tests => scalar @classes;
